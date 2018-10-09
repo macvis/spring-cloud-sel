@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.tee.springcloudsel.springcloudsel.mapper.OrderDetailMapper">
+    <resultMap id="orderDetailResultMap" type="com.tee.springcloudsel.springcloudsel.domain.OrderDetail">
+        <id column="detailId" property="detail_id" jdbcType="VARCHAR"/>
+        <result property="orderId" column="order_id" jdbcType="VARCHAR"/>
+        <result property="productId" column="product_id" jdbcType="VARCHAR"/>
+        <result property="productName" column="product_name" jdbcType="VARCHAR"/>
+        <result property="productPrice" column="product_price" jdbcType="DECIMAL"/>
+        <result property="productQuantity" column="product_quantity" jdbcType="VARCHAR"/>
+        <result property="productIcon" column="product_icon" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="allColumns">
+        detail_id,        order_id,           product_id,
+        product_name,     product_price,      product_quantity,
+        product_icon,     create_time,        update_time
+    </sql>
+
+    <select id="selectAll" resultMap="orderDetailResultMap">
+        SELECT
+        <include refid="allColumns"/>
+        FROM
+        order_detail
+        ORDER BY create_time desc;
+    </select>
+</mapper>
+

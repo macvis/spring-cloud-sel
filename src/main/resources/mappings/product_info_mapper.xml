@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.tee.springcloudsel.springcloudsel.mapper.ProductInfoMapper">
+    <resultMap id="productInfoResultMap" type="com.tee.springcloudsel.springcloudsel.domain.ProductInfo">
+        <id property="productId" column="product_id" jdbcType="VARCHAR"/>
+        <result property="productName" column="product_name" jdbcType="VARCHAR"/>
+        <result property="productPrice" column="product_price" jdbcType="VARCHAR"/>
+        <result property="productStock" column="product_stock" jdbcType="INTEGER"/>
+        <result property="productDescription" column="product_description" jdbcType="VARCHAR"/>
+        <result property="productIcon" column="product_icon" jdbcType="VARCHAR"/>
+        <result property="productStatus" column="product_status" jdbcType="INTEGER"/>
+        <result property="categoryType" column="category_type" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="allColumns">
+        product_id,         product_name,         product_price,
+        product_stock,      product_description,  product_icon,
+        product_status,     category_type,        create_time,
+        update_time
+    </sql>
+
+    <select id="selectAll" resultMap="productInfoResultMap">
+        SELECT
+          <include refid="allColumns"/>
+        FROM
+          PRODUCT_INFO
+        ORDER BY create_time desc;
+    </select>
+</mapper>
+
