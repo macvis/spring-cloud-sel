@@ -1,5 +1,4 @@
-package com.tee.springcloudsel.springcloudsel.dto;
-
+package com.tee.springcloudsel.userinfo.VO;
 
 import lombok.Data;
 
