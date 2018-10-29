@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
-<mapper namespace="com.tee.springcloudsel.springcloudsel.mapper.OrderMasterMapper">
-    <resultMap id="orderMasterResultMap" type="com.tee.springcloudsel.springcloudsel.domain.OrderMaster">
+<mapper namespace="com.tee.springcloudsel.order.mapper.OrderMasterMapper">
+    <resultMap id="orderMasterResultMap" type="com.tee.springcloudsel.order.domain.OrderMaster">
         <id column="orderId" property="order_id" jdbcType="VARCHAR"/>
         <result property="buyerName" column="buyer_name" jdbcType="VARCHAR"/>
         <result property="buyerPhone" column="buyer_phone" jdbcType="VARCHAR"/>
@@ -24,10 +24,35 @@
 
     <select id="selectAll" resultMap="orderMasterResultMap">
         SELECT
-        <include refid="allColumns"/>
+          <include refid="allColumns"/>
         FROM
-        order_master
+          order_master
         ORDER BY create_time desc;
     </select>
+
+    <select id="selectById" parameterType="String" resultMap="orderMasterResultMap">
+        SELECT
+          <include refid="allColumns"/>
+        FROM
+          order_master
+        WHERE
+          order_id = #{orderId}
+    </select>
+
+
+    <insert id="saveOrderMaster" parameterType="com.tee.springcloudsel.order.domain.OrderMaster">
+        INSERT INTO order_master
+        (
+            order_id,           buyer_name,         buyer_phone,
+            buyer_address,      buyer_openid,       order_amount,
+            order_status,       pay_status,         create_time,
+            update_time
+        )VALUES(
+            #{orderId},           #{buyerName},         #{buyerPhone},
+            #{buyerAddress},      #{buyerOpenid},       #{orderAmount},
+            #{orderStatus},       #{payStatus},         #{createTime},
+            #{updateTime}
+        )
+    </insert>
 </mapper>
 

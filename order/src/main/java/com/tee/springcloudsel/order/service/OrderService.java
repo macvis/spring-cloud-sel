@@ -1,7 +1,7 @@
 package com.tee.springcloudsel.order.service;
 
 
-import com.tee.springcloudsel.order.dto.OrderRequestDTO;
+import com.tee.springcloudsel.order.dto.OrderDTO;
 
 /**
  * 订单服务的Service
@@ -15,5 +15,7 @@ public interface OrderService {
      * @param requestDTO
      * @return
      */
-    String createOrder(OrderRequestDTO requestDTO);
+    OrderDTO createOrder(OrderDTO requestDTO);
+
+
 }

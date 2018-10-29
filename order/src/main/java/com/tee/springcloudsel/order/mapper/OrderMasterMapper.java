@@ -17,5 +17,7 @@ public interface OrderMasterMapper {
      */
     List<OrderMaster> selectAll();
 
+    OrderMaster selectById(String orderId);
 
+    void saveOrderMaster(OrderMaster orderMaster);
 }
