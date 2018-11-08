@@ -33,7 +33,7 @@ public class ClientController {
         log.info("result1 -> {}", result1);
 
         //2. 第二种方式，可以配置负载均衡
-        //缺点，李咏loadBalanceClient拼接url，在使用retTemplate，繁琐
+        //缺点，利用loadBalanceClient拼接url，在使用retTemplate，繁琐
         ServiceInstance serviceInstance = loadBalancerClient.choose("SPRING-CLOUD-PRODUCT-SEL-PRODUCT-SERVICE");
         String url = ("http://").concat(serviceInstance.getHost()).concat(":").concat(serviceInstance.getPort() + "").concat("/server/message");
         RestTemplate restTemplate2 = new RestTemplate();
