@@ -21,6 +21,7 @@ public class ClientController {
     @Autowired
     private LoadBalancerClient loadBalancerClient;
 
+    /**  restTemplate上可以使用@LoadBalanced注解*/
     @Autowired
     private RestTemplate restTemplate;
 
