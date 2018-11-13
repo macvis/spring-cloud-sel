@@ -29,5 +29,21 @@
           PRODUCT_INFO
         ORDER BY create_time desc;
     </select>
+
+    <select id="selectByIdList" parameterType="list" resultMap="productInfoResultMap">
+        SELECT
+          <include refid="allColumns"/>
+        FROM
+          PRODUCT_INFO
+        <where>
+            <if test="list != null">
+                product_id in
+                <foreach collection="list" item="productId" separator="," open="(" close=")">
+                    #{productId}
+                </foreach>
+            </if>
+        </where>
+        ORDER BY create_time desc;
+    </select>
 </mapper>
 

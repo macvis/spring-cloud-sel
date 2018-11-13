@@ -6,10 +6,7 @@ import com.tee.springcloudsel.product.service.ProductCategoryService;
 import com.tee.springcloudsel.product.service.ProductInfoService;
 import com.tee.springcloudsel.springcloudsel.dto.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -38,10 +35,9 @@ public class ProductController {
         List<ProductInfo> list = productInfoService.listAll();
         //2. 获取类目type列表
         List<Integer> catgoryTypeList =
-                list.stream().map(ProductInfo :: getCategoryType)
-                .collect(Collectors.toList());
+                list.stream().map(ProductInfo::getCategoryType)
+                        .collect(Collectors.toList());
         //3. 从数据库查询类目
-
 
 
         return new ResultVO(productVO);
@@ -50,7 +46,19 @@ public class ProductController {
 
     @RequestMapping(value = "/queryOne")
     @ResponseBody
-    public ResultVO<ProductVO> queryById(){
+    public ResultVO<ProductVO> queryById() {
         return null;
     }
+
+    /**
+     * 获取商品列表，给订单服务用
+     * @param productIdList id列表
+     * @return 商品列表
+     */
+    @PostMapping("/listForOrder")
+    @ResponseBody
+    public List<ProductInfo> listForOrder(@RequestBody List<String> productIdList) {
+        return productInfoService.listByProductIdList(productIdList);
+    }
+
 }

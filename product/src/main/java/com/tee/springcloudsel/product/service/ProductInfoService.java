@@ -14,4 +14,11 @@ public interface ProductInfoService {
      * @return
      */
     List<ProductInfo> listAll();
+
+    /**
+     * 根据商品id list查询根据商品list
+     * @param productIdList 根据商品id list
+     * @return 商品list
+     */
+    List<ProductInfo> listByProductIdList(List<String> productIdList);
 }

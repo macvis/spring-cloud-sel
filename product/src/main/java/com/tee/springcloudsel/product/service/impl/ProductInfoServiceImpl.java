@@ -5,6 +5,7 @@ import com.tee.springcloudsel.product.mapper.ProductInfoMapper;
 import com.tee.springcloudsel.product.service.ProductInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 
@@ -21,5 +22,14 @@ public class ProductInfoServiceImpl implements ProductInfoService {
     @Override
     public List<ProductInfo> listAll() {
         return productInfoMapper.selectAll();
+    }
+
+    @Override
+    public List<ProductInfo> listByProductIdList(List<String> productIdList) {
+        if(CollectionUtils.isEmpty(productIdList)){
+            return null;
+        }
+
+        return productInfoMapper.selectByIdList(productIdList);
     }
 }

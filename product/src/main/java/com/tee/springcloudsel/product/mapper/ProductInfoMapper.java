@@ -14,5 +14,16 @@ import java.util.List;
 @Component
 public interface ProductInfoMapper {
 
+    /**
+     * 全表查询
+     * @return
+     */
     List<ProductInfo> selectAll();
+
+    /**
+     * 使用id list查询这些id的数据
+     * @param productIdList id list
+     * @return 商品信息
+     */
+    List<ProductInfo> selectByIdList(List<String> productIdList);
 }

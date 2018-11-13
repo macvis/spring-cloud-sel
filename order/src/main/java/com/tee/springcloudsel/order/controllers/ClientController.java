@@ -1,13 +1,19 @@
 package com.tee.springcloudsel.order.controllers;
 
+import com.alibaba.fastjson.JSON;
 import com.tee.springcloudsel.order.client.ProductClient;
+import com.tee.springcloudsel.order.dto.ProductInfoDTO;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author youchao.wen
@@ -58,4 +64,17 @@ public class ClientController {
 
         return response;
     }
+
+    @PostMapping("/getProductListByIds")
+    @ResponseBody
+    public List<ProductInfoDTO> getProductListByIds(){
+        List<String> idList = new ArrayList<>();
+        idList.add("157875227953464068");
+        idList.add("164103465734242707");
+        List<ProductInfoDTO> resultList = productClient.listForOrder(idList);
+        log.info("查询结果 -> {}", JSON.toJSONString(resultList));
+
+        return resultList;
+    }
+
 }
