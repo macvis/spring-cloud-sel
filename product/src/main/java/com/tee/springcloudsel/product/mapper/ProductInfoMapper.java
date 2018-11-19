@@ -26,4 +26,24 @@ public interface ProductInfoMapper {
      * @return 商品信息
      */
     List<ProductInfo> selectByIdList(List<String> productIdList);
+
+    /**
+     * 根据商品id查询商品数量
+     * @param productId 商品id
+     * @return 数量
+     */
+    int countById(String productId);
+
+    /**
+     * 根据商品id查询商品
+     * @param productId 商品id
+     * @return 商品信息
+     */
+    ProductInfo selectById(String productId);
+
+    /**
+     * update商品信息
+     * @param ProductInfo 待更新的商品信息
+     */
+    void updateProductInfo(ProductInfo ProductInfo);
 }

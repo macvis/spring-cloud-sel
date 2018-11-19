@@ -2,9 +2,11 @@ package com.tee.springcloudsel.product.controllers;
 
 import com.tee.springcloudsel.product.VO.ProductVO;
 import com.tee.springcloudsel.product.domain.ProductInfo;
+import com.tee.springcloudsel.product.dto.ProductCartDTO;
 import com.tee.springcloudsel.product.service.ProductCategoryService;
 import com.tee.springcloudsel.product.service.ProductInfoService;
 import com.tee.springcloudsel.springcloudsel.dto.ResultVO;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +21,7 @@ import java.util.stream.Collectors;
  */
 @RestController
 @RequestMapping("/product")
+@Log4j2
 public class ProductController {
 
     @Autowired
@@ -61,4 +64,12 @@ public class ProductController {
         return productInfoService.listByProductIdList(productIdList);
     }
 
+    @PostMapping("/decreaseStock")
+    public void decreaseStock(@RequestBody List<ProductCartDTO> cartDTOList){
+        try{
+            productInfoService.decreaseStock(cartDTOList);
+        }catch(Exception e){
+            log.info("", e);
+        }
+    }
 }

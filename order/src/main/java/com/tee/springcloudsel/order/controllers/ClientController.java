@@ -2,6 +2,7 @@ package com.tee.springcloudsel.order.controllers;
 
 import com.alibaba.fastjson.JSON;
 import com.tee.springcloudsel.order.client.ProductClient;
+import com.tee.springcloudsel.order.dto.ProductCartDTO;
 import com.tee.springcloudsel.order.dto.ProductInfoDTO;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ public class ClientController {
     @Autowired
     private RestTemplate restTemplate;
 
-    @Autowired
+    @Autowired(required = false)
     private ProductClient productClient;
 
     @PostMapping("/getProductMessage")
@@ -77,4 +78,25 @@ public class ClientController {
         return resultList;
     }
 
+    @PostMapping("/decreaseStock")
+    public String decreaseProductStock(){
+        String productId = "164103465734242707";
+        int count1 = 10;
+        ProductCartDTO cartDTO1 = new ProductCartDTO();
+        cartDTO1.setProductId(productId);
+        cartDTO1.setCount(count1);
+
+        String productId2 = "157875227953464068";
+        int count2 = 12;
+        ProductCartDTO cartDTO2 = new ProductCartDTO();
+        cartDTO2.setProductId(productId2);
+        cartDTO2.setCount(count2);
+
+        List<ProductCartDTO> cartDTOList = new ArrayList<>();
+        cartDTOList.add(cartDTO1);
+        cartDTOList.add(cartDTO2);
+        productClient.decreaseStock(cartDTOList);
+
+        return "success";
+    }
 }

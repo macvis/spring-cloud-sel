@@ -1,8 +1,10 @@
 package com.tee.springcloudsel.order.client;
 
+import com.tee.springcloudsel.order.dto.ProductCartDTO;
 import com.tee.springcloudsel.order.dto.ProductInfoDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -27,4 +29,11 @@ public interface ProductClient {
      */
     @PostMapping("/product/listForOrder")
     List<ProductInfoDTO> listForOrder(List<String> productIdList);
+
+    /**
+     * 减少库存的接口
+     * @param cartDTOList 购物车商品列表
+     */
+    @PostMapping("/product/decreaseStock")
+    void decreaseStock(@RequestBody List<ProductCartDTO> cartDTOList);
 }
