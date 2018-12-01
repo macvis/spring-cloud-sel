@@ -11,4 +11,11 @@ public class ProductCartDTO {
     private String productId;
 
     private Integer count;
+
+    public ProductCartDTO(String productId, Integer count){
+        this.productId = productId;
+        this.count = count;
+    }
+
+    public ProductCartDTO(){}
 }
