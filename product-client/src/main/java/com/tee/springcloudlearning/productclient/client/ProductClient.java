@@ -1,7 +1,7 @@
-package com.tee.springcloudsel.order.client;
+package com.tee.springcloudlearning.productclient.client;
 
-import com.tee.springcloudsel.order.dto.ProductCartDTO;
-import com.tee.springcloudsel.order.dto.ProductInfoDTO;
+import com.tee.springcloudlearning.productclient.dto.ProductCartDTO;
+import com.tee.springcloudlearning.productclient.dto.ProductInfoDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

@@ -1,9 +1,9 @@
 package com.tee.springcloudsel.order.controllers;
 
 import com.alibaba.fastjson.JSON;
-import com.tee.springcloudsel.order.client.ProductClient;
-import com.tee.springcloudsel.order.dto.ProductCartDTO;
-import com.tee.springcloudsel.order.dto.ProductInfoDTO;
+import com.tee.springcloudlearning.productclient.client.ProductClient;
+import com.tee.springcloudlearning.productclient.dto.ProductCartDTO;
+import com.tee.springcloudlearning.productclient.dto.ProductInfoDTO;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;

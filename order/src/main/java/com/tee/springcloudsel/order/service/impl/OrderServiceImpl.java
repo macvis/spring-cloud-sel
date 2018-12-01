@@ -1,13 +1,13 @@
 package com.tee.springcloudsel.order.service.impl;
 
-import com.tee.springcloudsel.order.client.ProductClient;
+import com.tee.springcloudlearning.productclient.client.ProductClient;
+import com.tee.springcloudlearning.productclient.dto.ProductCartDTO;
+import com.tee.springcloudlearning.productclient.dto.ProductInfoDTO;
 import com.tee.springcloudsel.order.constant.OrderStatus;
 import com.tee.springcloudsel.order.constant.PayStatus;
 import com.tee.springcloudsel.order.domain.OrderDetail;
 import com.tee.springcloudsel.order.domain.OrderMaster;
 import com.tee.springcloudsel.order.dto.OrderDTO;
-import com.tee.springcloudsel.order.dto.ProductCartDTO;
-import com.tee.springcloudsel.order.dto.ProductInfoDTO;
 import com.tee.springcloudsel.order.helper.OrderDTOHelper;
 import com.tee.springcloudsel.order.mapper.OrderDetailMapper;
 import com.tee.springcloudsel.order.mapper.OrderMasterMapper;

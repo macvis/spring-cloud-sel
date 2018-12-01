@@ -1,4 +1,4 @@
-package com.tee.springcloudsel.order.dto;
+package com.tee.springcloudlearning.productclient.dto;
 
 import lombok.Data;
 
