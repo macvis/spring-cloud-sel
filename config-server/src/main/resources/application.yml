@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/macvis/config-repo.git
+          username: macvis@126.com
+          password: Evilvisas7553
+          basedir: /Users/Tee/SynologySync/SynologyDrive/学习/spring-cloud-sel/config_files
+
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka/
